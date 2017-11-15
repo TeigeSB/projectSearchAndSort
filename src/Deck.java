@@ -1,6 +1,5 @@
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Random;
 
 public class Deck {
 
@@ -12,18 +11,20 @@ public class Deck {
 
         if (Deck) {
 
+            allCards = new Card[52];
+
             for (int i = 0; i < 52; i++) {
 
-                allCards = new Card[52];
                 allCards[i] = new Card();
 
             }
 
         } else {
 
+            allCards = new Card[13];
+
             for (int j = 0; j < 13; j++) {
 
-                allCards = new Card[13];
                 allCards[j] = new Card();
 
             }
@@ -46,7 +47,7 @@ public class Deck {
         for (int i = 0; i < numCards; i++) {
 
             hand = new Card[numCards];
-            hand[i] = new Card();
+            hand[i] = allCards[i];
             System.out.println(hand[i]);
 
         }
@@ -68,15 +69,22 @@ public class Deck {
 
     public Card[] bubbleSort() {
 
-        for (int i = 0; i < (allCards.length - 2); i++) {
+        int y = 50;
 
-            if (allCards[i].value > allCards[i + 1].value) {
+        for (int j = 0; j < y; j += 2) {
 
-                swap(i, i + 1);
+            for (int i = 0; i < (allCards.length - 2); i++) {
+
+                if (allCards[i].value > allCards[i + 1].value) {
+
+                    swap(i, i + 1);
+                    y -= 2;
+
+                }
 
             }
-
         }
+        System.out.println(allCards);
         return allCards;
     }
 

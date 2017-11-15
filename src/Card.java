@@ -6,8 +6,7 @@ public class Card {
 
     public Card() {
 
-        int suit = randomRange(1, 4);
-        int value = randomRange(1,14);
+
 
     }
 
