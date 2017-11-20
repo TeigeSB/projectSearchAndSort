@@ -11,26 +11,27 @@ public class Deck {
 
         if (Deck) {
 
+            int count = 0;
             allCards = new Card[52];
 
-            for (int i = 0; i < 52; i++) {
+            for (int j = 1; j <= 4; j++) {
+                for (int i = 1; i <= 13; i++) {
 
-                allCards[i] = new Card();
+                    allCards[count] = new Card(j, i);
+                    count++;
+                }
+            } if (!Deck) {
+
+                allCards = new Card[13];
+
+                //for (int j = 0; j < 13; j++) {
+
+                //   allCards[j] = new Card();
+
+                //}
 
             }
-
-        } else {
-
-            allCards = new Card[13];
-
-            for (int j = 0; j < 13; j++) {
-
-                allCards[j] = new Card();
-
-            }
-
         }
-
     }
 
     public void swap(int first, int second) {
@@ -42,13 +43,16 @@ public class Deck {
 
     }
 
+
+
+
     public Card[] dealHand(int numCards) {
 
         for (int i = 0; i < numCards; i++) {
 
             hand = new Card[numCards];
             hand[i] = allCards[i];
-            System.out.println(hand[i]);
+            System.out.println(hand[i].getName());
 
         }
         return hand;
@@ -69,22 +73,41 @@ public class Deck {
 
     public Card[] bubbleSort() {
 
-        int y = 50;
+        int y = allCards.length;
 
-        for (int j = 0; j < y; j += 2) {
+        for (int j = 0; j < y; j += 1) {
 
-            for (int i = 0; i < (allCards.length - 2); i++) {
+            for (int i = 0; i < (y - 1); i++) {
 
-                if (allCards[i].value > allCards[i + 1].value) {
+                if (allCards[i].getValue() > allCards[i + 1].getValue()) {
 
                     swap(i, i + 1);
-                    y -= 2;
 
                 }
 
             }
         }
-        System.out.println(allCards);
+        return allCards;
+    }
+
+    public Card[] selectionSort() {
+
+        int y = allCards.length;
+
+        for (int j = 0; j < y; y++) {
+
+            for (int i = 0; i < (y - 1); i++) {
+
+                if (allCards[i].getValue() > allCards[i + 1].getValue()) {
+
+                    swap(i, i - i);
+
+                }
+
+            }
+        }
+
+
         return allCards;
     }
 
