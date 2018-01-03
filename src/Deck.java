@@ -93,21 +93,48 @@ public class Deck {
     public Card[] selectionSort() {
 
         int y = allCards.length;
+        int lowArr = 0;
+        Card lowVal;
 
-        for (int j = 0; j < y; y++) {
+        for (int j = 0; j < y; j++) {
 
-            for (int i = 0; i < (y - 1); i++) {
+            lowVal = allCards[j];
 
-                if (allCards[i].getValue() > allCards[i + 1].getValue()) {
+            for (int i = 0 + j; i < y; i++) {
 
-                    swap(i, i - i);
+                if (allCards[i].value <= lowVal.value) {
+
+                    lowVal = allCards[i];
+                    lowArr = i;
 
                 }
-
             }
+            swap(lowArr, j);
         }
+        return allCards;
+    }
+
+    public Card[] divide() {
+
+        Card[] divideArr = new Card[26];
+        Card[] dividedArr = new Card[26];
+        System.arraycopy(allCards,0, divideArr,0,26);
+        System.arraycopy(allCards,26, dividedArr,0,26);
+        int split = (allCards.length/2);
+
+        for (int i = 0; i < split; i++) {
+
+            divideArr[i] = allCards[i];
 
 
+        } for (int i = split; i < 52; i++) {
+
+            for (int j = 0; i < dividedArr.length; j++) {
+
+                dividedArr[j] = allCards[i];
+            }
+
+        }
         return allCards;
     }
 
