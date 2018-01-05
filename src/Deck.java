@@ -114,31 +114,85 @@ public class Deck {
         return allCards;
     }
 
-    public Card[] divide() {
+    public void divide(int l, int m, int r) {
 
-        Card[] divideArr = new Card[26];
-        Card[] dividedArr = new Card[26];
-        System.arraycopy(allCards,0, divideArr,0,26);
-        System.arraycopy(allCards,26, dividedArr,0,26);
-        int split = (allCards.length/2);
+        int l1 = m - l + 1;
+        int r1 = r - m;
 
-        for (int i = 0; i < split; i++) {
-
-            divideArr[i] = allCards[i];
+        Card[] left = new Card[l1];
+        Card[] right = new Card[r1];
 
 
-        } for (int i = split; i < 52; i++) {
+        for (int i = 0; i < l1; ++i) {
 
-            for (int j = 0; i < dividedArr.length; j++) {
+            left[i] = allCards[l + i];
+        }
 
-                dividedArr[j] = allCards[i];
+        for (int j = 0; j < r1; ++j) {
+
+            right[j] = allCards[m + 1 + j];
+
+        }
+
+        int k = l;
+        int i = 0, j = 0;
+
+        while(i < l1 && j < r1) {
+
+            if (left[i].value <= right[j].value) {
+
+                 allCards[k] = left[i];
+                 i++;
+
+            } else {
+
+                allCards[k] = right[j];
+                j++;
+
             }
+            k++;
+        }
+
+        while (i < l1) {
+
+            allCards[k] = left[i];
+            i++;
+            k++;
+
+        }
+
+        while (j < r1) {
+
+            allCards[k] = right[j];
+            j++;
+            k++;
+
+        }
+    }
+
+    public Card[] merge(int l , int r) {
+
+        if (l < r) {
+
+            int m = (l + r) / 2;
+
+            merge(l, m);
+            merge(m+1, r);
+
+            divide(l, m, r);
 
         }
         return allCards;
     }
 
+    public Card binarySearch(Card key, int l, int h) {
 
+
+
+
+
+        return key;
+    }
 
 
 }
