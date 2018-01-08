@@ -5,6 +5,7 @@ public class Runner {
         //d.shuffleDeck();
         //d.selectionSort();
         d.merge(0, 51);
+        d.binarySearch("Ace of Spades", 0, 52);
         //d.dealHand(7);
         //d.bubbleSort();
         //d.listHand();

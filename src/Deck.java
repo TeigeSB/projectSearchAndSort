@@ -185,13 +185,21 @@ public class Deck {
         return allCards;
     }
 
-    public Card binarySearch(Card key, int l, int h) {
+    public Card binarySearch(String key, int l, int h) {
 
+        if (h >= 1) {
 
+            int mid = l + (h - 1)/2;
 
+            if (allCards[mid].name == key) {
+                return allCards[mid];
+            }
+            if (allCards[mid].name != key) {
+                return binarySearch(key,l,mid - 1);
+            }
 
-
-        return key;
+        }
+        return allCards[36];
     }
 
 
