@@ -185,21 +185,28 @@ public class Deck {
         return allCards;
     }
 
-    public Card binarySearch(String key, int l, int h) {
+    public double binarySearch(double num, int l, int h) {
+
+
 
         if (h >= 1) {
 
-            int mid = l + (h - 1)/2;
+            int mid = (l + h)/2;
+            System.out.println(mid + " HI TEST mid");
 
-            if (allCards[mid].name == key) {
-                return allCards[mid];
+            if (allCards[mid].nyum == num) {
+                System.out.println(allCards[mid].nyum + " HI TEST correct");
+                return allCards[mid].nyum;
             }
-            if (allCards[mid].name != key) {
-                return binarySearch(key,l,mid - 1);
+            if (allCards[mid].nyum > num) {
+                System.out.println("Hi hit higher");
+                return binarySearch(num,l, mid - 1);
             }
-
+            System.out.println(allCards[mid].nyum + " Hi hit lower");
+            return binarySearch(num, mid + 1, h);
         }
-        return allCards[36];
+        System.out.println("Hi You failed.");
+        return allCards[36].nyum;
     }
 
 

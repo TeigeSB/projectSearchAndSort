@@ -2,12 +2,14 @@ public class Card  {
 
     int suit;
     int value;
+    double nyum;
     String name;
 
     public Card(int suit, int value) {
 
         this.suit = suit;
         this.value = value;
+        this.nyum = this.value + forNyum();
 
     }
 
@@ -56,13 +58,35 @@ public class Card  {
         } else if (value == 13) {
 
             this.name = "King of" + chek;
-
         } else {
 
             this.name = value + chek;
 
         }
-
     }
+
+    public double forNyum() {
+
+        if (this.suit == 1) {
+
+            return .00;
+
+        } else if (this.suit == 2) {
+
+            return .25;
+
+        } else if (this.suit == 3) {
+
+            return .50;
+
+        } else if (this.suit == 4) {
+
+            return .75;
+
+        }
+        return 4.04;
+    }
+
+
 
 }
