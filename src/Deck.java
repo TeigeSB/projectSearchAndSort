@@ -79,7 +79,7 @@ public class Deck {
 
             for (int i = 0; i < (y - 1); i++) {
 
-                if (allCards[i].getValue() > allCards[i + 1].getValue()) {
+                if (allCards[i].nyum > allCards[i + 1].nyum) {
 
                     swap(i, i + 1);
 
@@ -100,9 +100,9 @@ public class Deck {
 
             lowVal = allCards[j];
 
-            for (int i = 0 + j; i < y; i++) {
+            for (int i = j; i < y; i++) {
 
-                if (allCards[i].value <= lowVal.value) {
+                if (allCards[i].nyum <= lowVal.nyum) {
 
                     lowVal = allCards[i];
                     lowArr = i;
@@ -139,7 +139,7 @@ public class Deck {
 
         while(i < l1 && j < r1) {
 
-            if (left[i].value <= right[j].value) {
+            if (left[i].nyum <= right[j].nyum) {
 
                  allCards[k] = left[i];
                  i++;
@@ -192,17 +192,16 @@ public class Deck {
         if (h >= 1) {
 
             int mid = (l + h)/2;
-            System.out.println(mid + " HI TEST mid");
 
             if (allCards[mid].nyum == num) {
                 System.out.println(allCards[mid].nyum + " HI TEST correct");
                 return allCards[mid].nyum;
             }
             if (allCards[mid].nyum > num) {
-                System.out.println("Hi hit higher");
-                return binarySearch(num,l, mid - 1);
+                System.out.println(allCards[mid].nyum + " lower");
+                return binarySearch(num, l, mid - 1);
             }
-            System.out.println(allCards[mid].nyum + " Hi hit lower");
+            System.out.println(allCards[mid].nyum + " higher");
             return binarySearch(num, mid + 1, h);
         }
         System.out.println("Hi You failed.");
